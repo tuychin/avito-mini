@@ -1,3 +1,7 @@
+/*
+Граница обработки ошибок
+*/
+
 import React, { Component } from 'react';
 import ErrorIndicator from '../error-indicator';
 
