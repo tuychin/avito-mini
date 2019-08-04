@@ -8,7 +8,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
 
   switch (action.type) {
-    case 'FETCH_ADS_REQUEST':
+    case 'HTTP_ADS_REQUEST':
       return {
         ...state,
         books: [],
@@ -16,7 +16,7 @@ const reducer = (state = initialState, action) => {
         error: null
       };
 
-    case 'FETCH_ADS_SUCCESS':
+    case 'HTTP_ADS_SUCCESS':
       return {
         ...state,
         books: action.payload,
@@ -24,7 +24,7 @@ const reducer = (state = initialState, action) => {
         error: null
       };
 
-    case 'FETCH_ADS_FAILURE':
+    case 'HTTP_ADS_FAILURE':
       return {
         ...state,
         books: [],
