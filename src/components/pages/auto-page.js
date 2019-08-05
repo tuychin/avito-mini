@@ -2,7 +2,7 @@ import React from 'react';
 
 const AutoPage = () => {
   return (
-    <div>Auto Page</div>
+    <h1>Auto Page</h1>
   );
 };
 

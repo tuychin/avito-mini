@@ -2,7 +2,7 @@ import React from 'react';
 
 const ImmovablePage = () => {
   return (
-    <div>Immovable Page</div>
+    <h1>Immovable Page</h1>
   );
 };
 

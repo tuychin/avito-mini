@@ -1,7 +1,7 @@
 import { 
   AvitoMiniServiceProvider,
   AvitoMiniServiceConsumer
-} from './bookstore-service-context';
+} from './avito-mini-service-context';
 
 export { 
   AvitoMiniServiceProvider,
