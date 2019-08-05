@@ -1,5 +1,5 @@
 /*
-Клиент API
+Client API
 */
 export default class AvitoDumpService {
 

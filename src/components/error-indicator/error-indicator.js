@@ -1,5 +1,5 @@
 /*
-Обработка ошибки
+Error handling
 */
 
 import React from 'react';

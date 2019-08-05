@@ -1,11 +1,11 @@
 /*
-Граница обработки ошибок
+Error handling boundary
 */
 
 import React, { Component } from 'react';
 import ErrorIndicator from '../error-indicator';
 
-export default class ErrorBoundry extends Component {
+export default class ErrorBoundary extends Component {
 
   state = {
     hasError: false

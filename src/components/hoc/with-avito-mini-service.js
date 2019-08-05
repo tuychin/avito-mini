@@ -1,5 +1,5 @@
 /*
-HOC для доступа к сервису через Context
+HOC for accessing the service through Context
 */
 
 import React from 'react';
