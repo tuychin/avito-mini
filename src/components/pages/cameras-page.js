@@ -2,8 +2,8 @@ import React from 'react';
 
 const CamerasPage = () => {
   return (
-    <h1>Cameras Page</h1>
+    <h1>Камеры</h1>
   );
-};
+}
 
 export default CamerasPage;

@@ -2,8 +2,8 @@ import React from 'react';
 
 const AutoPage = () => {
   return (
-    <h1>Auto Page</h1>
+    <h1>Автомобили</h1>
   );
-};
+}
 
 export default AutoPage;

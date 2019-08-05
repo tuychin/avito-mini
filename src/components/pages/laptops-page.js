@@ -2,8 +2,8 @@ import React from 'react';
 
 const LaptopsPage = () => {
   return (
-    <h1>Laptops Page</h1>
+    <h1>Ноутбуки</h1>
   );
-};
+}
 
 export default LaptopsPage;
