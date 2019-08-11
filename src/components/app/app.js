@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import {Route, Switch} from 'react-router-dom';
 //Custom files
 import Header from '../header';
-import Filter from '../filter';
 import {
   HomePage,
   ImmovablePage,
@@ -18,7 +17,6 @@ const App = () => {
   return (
     <Fragment>
       <Header />
-      <Filter />
       <main role="main" className="container">
         <Switch>
           <Route path="/" component={HomePage} exact />
