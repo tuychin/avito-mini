@@ -1,8 +1,12 @@
 import React from 'react';
+import AdsList from '../ads-list';
 
 const HomePage = () => {
   return (
-    <h1>Все объявления</h1>
+    <div>
+      <h1>Все объявления</h1>
+      <AdsList />
+    </div>
   );
 }
 

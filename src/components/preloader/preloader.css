@@ -20,6 +20,12 @@
   }
 }
 
+.preloader {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .lds-rolling {
   position: relative;
 }

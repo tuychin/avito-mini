@@ -5,11 +5,11 @@ To transfer the service through Context to all components
 import React from 'react';
 
 const {
-  Provider: AvitoMiniServiceProvider,
-  Consumer: AvitoMiniServiceConsumer
+  Provider: DataServiceProvider,
+  Consumer: DataServiceConsumer
 } = React.createContext();
 
 export {
-  AvitoMiniServiceProvider,
-  AvitoMiniServiceConsumer
+  DataServiceProvider,
+  DataServiceConsumer
 }

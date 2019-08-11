@@ -1,5 +1,5 @@
-import withAvitoMiniService from './with-avito-mini-service';
+import withDataService from './with-data-service';
 
 export {
-  withAvitoMiniService
+  withDataService
 };

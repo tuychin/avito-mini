@@ -33,7 +33,13 @@ const Header = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/laptops">Ноутбуки</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/favorites">Избранное ❤</Link>
+            </li>
           </ul>
+          <form className="form-inline my-2 my-lg-0">
+            <input className="form-control mr-sm-2" type="text" placeholder="Поиск"/>
+          </form>
         </div>
       </nav>
     </header>

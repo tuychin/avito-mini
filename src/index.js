@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import App from './components/app';
 import ErrorBoundry from './components/error-boundry';
 import AvitoDumpService from './services/avito-dump-service';
-import { AvitoMiniServiceProvider } from './components/avito-mini-service-context';
+import { DataServiceProvider } from './components/data-service-context';
 
 import store from './store';
 
@@ -15,11 +15,11 @@ const dataService = new AvitoDumpService();
 ReactDOM.render(
   <Provider store={store}>
     <ErrorBoundry>
-      <AvitoMiniServiceProvider value={dataService}>
+      <DataServiceProvider value={dataService}>
         <Router>
           <App />
         </Router>
-      </AvitoMiniServiceProvider>
+      </DataServiceProvider>
     </ErrorBoundry>
   </Provider>,
   document.getElementById('root')

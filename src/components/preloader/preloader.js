@@ -4,8 +4,8 @@ import './preloader.css';
 
 const Preloader = () => {
   return (
-    <div class="lds-css ng-scope">
-      <div class="lds-rolling">
+    <div className="preloader lds-css ng-scope">
+      <div className="lds-rolling">
         <div>
         </div>
       </div>

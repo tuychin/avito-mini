@@ -23,9 +23,9 @@ const adsError = (error) => {
 }
 
 //Получение и обработка объявлений из сервиса
-const httpAds = (avitoService, dispatch) => () => {
+const httpAds = (dataService, dispatch) => () => {
   dispatch(adsRequested());
-  avitoService.getAds()
+  dataService.getAdsData()
     .then((data) => dispatch(adsLoaded(data)))
     .catch((err) => dispatch(adsError(err)));
 }

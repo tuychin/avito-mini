@@ -1,0 +1,19 @@
+.ads-item img {
+  height: 200px;
+  width: 100%;
+  display: block;
+}
+
+.price {
+	font-size: 1.5em;
+}
+
+.heart {
+	float: right;
+	font-size: 2em;
+	color: #2196F3;
+}
+
+.heart:hover {
+	color: #ff0000;
+}

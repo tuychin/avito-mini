@@ -11,7 +11,7 @@ const reducer = (state = initialState, action) => {
     case 'HTTP_ADS_REQUEST':
       return {
         ...state,
-        books: [],
+        ads: [],
         loading: true,
         error: null
       };
@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
     case 'HTTP_ADS_SUCCESS':
       return {
         ...state,
-        books: action.payload,
+        ads: action.payload,
         loading: false,
         error: null
       };
@@ -27,7 +27,7 @@ const reducer = (state = initialState, action) => {
     case 'HTTP_ADS_FAILURE':
       return {
         ...state,
-        books: [],
+        ads: [],
         loading: false,
         error: action.payload
       };
