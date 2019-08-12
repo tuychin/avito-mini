@@ -7,7 +7,7 @@ import Carousel from '../carousel/';
 import './ads-item.css';
 
 const AdsItem = ({ ads }) => {
-  const { title, /*isFavorite,*/ price, images, sellerRating, sellerName } = ads;
+  const { title, price, images, sellerRating, sellerName } = ads;
 
   const separatedPrice = numberSeparator(price);
   const uppercaseTitle = ucFirst(title);
