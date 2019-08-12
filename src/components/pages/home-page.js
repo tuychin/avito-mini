@@ -1,13 +1,28 @@
-import React from 'react';
-import AdsList from '../ads-list';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux'
 
-const HomePage = () => {
+import AdsList from '../ads-list';
+import { adsFiltered } from '../../actions';
+
+const HomePage = ({ filterAds, dispatch }) => {
+
+  useEffect(() => {
+    dispatch(filterAds('all'))
+  });
+
   return (
-    <div>
+    <section className="home-page">
       <h1>Все объявления</h1>
       <AdsList />
-    </div>
+    </section>
   );
 }
 
-export default HomePage;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    filterAds: adsFiltered,
+    dispatch
+  }
+};
+
+export default connect(mapDispatchToProps)(HomePage);

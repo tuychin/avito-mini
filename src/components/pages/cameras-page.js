@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux'
 
-const CamerasPage = () => {
+import AdsList from '../ads-list';
+import { adsFiltered } from '../../actions';
+
+const CamerasPage = ({ adsFiltered, dispatch }) => {
+
+  useEffect(() => {
+    dispatch(adsFiltered('cameras'))
+  });
+  
   return (
-    <h1>Камеры</h1>
+    <section className="cameras-page">
+      <h1>Камеры</h1>
+      <AdsList />
+    </section>
   );
 }
 
-export default CamerasPage;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    adsFiltered: adsFiltered,
+    dispatch
+  }
+};
+
+export default connect(mapDispatchToProps)(CamerasPage);

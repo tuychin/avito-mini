@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux'
 
-const AutoPage = () => {
+import AdsList from '../ads-list';
+import { adsFiltered } from '../../actions';
+
+const AutoPage = ({ filterAds, dispatch }) => {
+
+  useEffect(() => {
+    dispatch(filterAds('auto'))
+  });
+
   return (
-    <h1>Автомобили</h1>
+    <section className="auto-page">
+      <h1>Автомобили</h1>
+      <AdsList />
+    </section>
   );
 }
 
-export default AutoPage;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    filterAds: adsFiltered,
+    dispatch
+  }
+};
+
+export default connect(mapDispatchToProps)(AutoPage);

@@ -3,6 +3,7 @@ const initialState = {
   ads: [],
   loading: true,
   error: null,
+  filter: 'all'
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,6 +31,12 @@ const reducer = (state = initialState, action) => {
         ads: [],
         loading: false,
         error: action.payload
+      };
+
+    case 'ADS_FILTERED':
+      return {
+        ...state,
+        filter: action.payload
       };
 
     default:

@@ -57,6 +57,8 @@ export default class AvitoDumpService {
         title: product.title,
         price: product.price,
         images: product.pictures,
+        category: product.category,
+        isFavorite: false,
         sellerName: seller.name,
         sellerRating: seller.rating
       }

@@ -5,10 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './carousel.css';
 
-const Carousel = ({ images }) => {
-
-  console.log(images);
-  
+const Carousel = ({ images }) => {  
 
   const sliderSettings = {
     dots: true,
@@ -24,7 +21,7 @@ const Carousel = ({ images }) => {
       {
         images.map((imgUrl) => {
           return (
-            <div className="carousel__slide">
+            <div className="carousel__slide" key={imgUrl}>
               <img src={`http:${imgUrl}`} alt={`http:${imgUrl}`}/>
             </div>
           )

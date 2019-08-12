@@ -22,6 +22,13 @@ const adsError = (error) => {
   }
 }
 
+const adsFiltered = (filter) => {
+  return {
+    type: 'ADS_FILTERED',
+    payload: filter
+  }
+}
+
 //Получение и обработка объявлений из сервиса
 const httpAds = (dataService, dispatch) => () => {
   dispatch(adsRequested());
@@ -31,5 +38,6 @@ const httpAds = (dataService, dispatch) => () => {
 }
 
 export {
-  httpAds
+  httpAds,
+  adsFiltered
 }

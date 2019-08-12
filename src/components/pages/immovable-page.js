@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux'
 
-const ImmovablePage = () => {
+import AdsList from '../ads-list';
+import { adsFiltered } from '../../actions';
+
+const ImmovablePage = ({ adsFiltered, dispatch }) => {
+
+  useEffect(() => {
+    dispatch(adsFiltered('immovable'))
+  });
+
   return (
-    <h1>Недвижимость</h1>
+    <section className="immovable-page">
+      <h1>Недвижимость</h1>
+      <AdsList />
+    </section>
   );
 }
 
-export default ImmovablePage;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    adsFiltered: adsFiltered,
+    dispatch
+  }
+};
+
+export default connect(mapDispatchToProps)(ImmovablePage);
