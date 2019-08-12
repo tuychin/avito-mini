@@ -5,7 +5,7 @@ import { ucFirst, numberSeparator } from '../../utils';
 import './ads-item.css';
 
 const AdsItem = ({ ads }) => {
-  const { title, isFavorite, price, images, sellerRating, sellerName } = ads;
+  const { title, /*isFavorite,*/ price, /*images,*/ sellerRating, sellerName } = ads;
 
   const separatedPrice = numberSeparator(price);
   const uppercaseTitle = ucFirst(title);

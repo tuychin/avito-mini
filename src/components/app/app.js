@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import {Route, Switch} from 'react-router-dom';
 //Custom files
 import Header from '../header';
+import Footer from '../footer';
+import BackToTopButton from '../back-to-top-button';
 import {
   HomePage,
   ImmovablePage,
@@ -32,6 +34,8 @@ const App = () => {
           )} />
         </Switch>
       </main>
+      <BackToTopButton />
+      <Footer />
     </Fragment>
   );
 }
