@@ -1,11 +1,13 @@
 import React from 'react';
 import StarRatings from 'react-star-ratings';
+
 import { ucFirst, numberSeparator } from '../../utils';
+import Carousel from '../carousel/';
 
 import './ads-item.css';
 
 const AdsItem = ({ ads }) => {
-  const { title, /*isFavorite,*/ price, /*images,*/ sellerRating, sellerName } = ads;
+  const { title, /*isFavorite,*/ price, images, sellerRating, sellerName } = ads;
 
   const separatedPrice = numberSeparator(price);
   const uppercaseTitle = ucFirst(title);
@@ -19,7 +21,7 @@ const AdsItem = ({ ads }) => {
       <div className="card-body">
         <span className="price">{price === undefined ? 'Цена не указана' : `${separatedPrice} ₽`}</span>
       </div>
-      <img src="https://loremflickr.com/400/400/auto,interior?random=8" alt="Card img"/>
+      <Carousel images={images} />
       <div className="card-body">
         <StarRatings
           rating={sellerRating}

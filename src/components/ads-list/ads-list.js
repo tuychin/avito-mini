@@ -12,7 +12,6 @@ import ErrorIndicator from '../error-indicator';
 import './ads-list.css';
 
 const AdsList = ({ ads }) => {
-  console.log(ads);
   return (
     <section className="ads-list row">
       {

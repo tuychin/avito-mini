@@ -20,4 +20,9 @@
 
 .footer__text-container a {
   color: #fff;
+  text-decoration: underline;
+}
+
+.footer__text-container a:hover {
+  text-decoration: none;
 }
