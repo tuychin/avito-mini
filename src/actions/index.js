@@ -22,14 +22,21 @@ const adsError = (error) => {
   }
 }
 
-const adsFiltered = (filter) => {
+const adsFilter = (filter) => {
   return {
-    type: 'ADS_FILTERED',
+    type: 'ADS_FILTER_BY_CATEGORY',
     payload: filter
   }
 }
 
-//Получение и обработка объявлений из сервиса
+const updateFavorites = (adsId) => {
+  return {
+    type: 'FAVORITES_UPDATE',
+    payload: adsId
+  }
+}
+
+//Get data
 const httpAds = (dataService, dispatch) => () => {
   dispatch(adsRequested());
   dataService.getAdsData()
@@ -39,5 +46,6 @@ const httpAds = (dataService, dispatch) => () => {
 
 export {
   httpAds,
-  adsFiltered
+  adsFilter,
+  updateFavorites
 }

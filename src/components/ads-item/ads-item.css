@@ -2,12 +2,24 @@
 	font-size: 1.5em;
 }
 
-.heart {
+.heart-btn {
 	float: right;
 	font-size: 2em;
+	padding: 0;
+	background-color: transparent;
+	border-color: transparent;
+	border-width: 0;
+	border-style: none;
+}
+
+.heart-btn-blue {
 	color: #2196F3;
 }
 
-.heart:hover {
+.heart-btn-red {
+	color: #ff0000;
+}
+
+.heart-btn:hover {
 	color: #ff0000;
 }

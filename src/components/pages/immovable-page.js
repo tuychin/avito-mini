@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 
 import AdsList from '../ads-list';
-import { adsFiltered } from '../../actions';
+import { adsFilter } from '../../actions';
 
-const ImmovablePage = ({ adsFiltered, dispatch }) => {
+const ImmovablePage = ({ adsFilter, dispatch }) => {
 
   useEffect(() => {
-    dispatch(adsFiltered('immovable'))
+    dispatch(adsFilter('immovable'))
   });
 
   return (
@@ -20,7 +20,7 @@ const ImmovablePage = ({ adsFiltered, dispatch }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    adsFiltered: adsFiltered,
+    adsFilter: adsFilter,
     dispatch
   }
 };

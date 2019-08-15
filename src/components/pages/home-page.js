@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 
 import AdsList from '../ads-list';
-import { adsFiltered } from '../../actions';
+import { adsFilter } from '../../actions';
 
-const HomePage = ({ filterAds, dispatch }) => {
+const HomePage = ({ adsFilter, dispatch }) => {
 
   useEffect(() => {
-    dispatch(filterAds('all'))
+    dispatch(adsFilter('all'))
   });
 
   return (
@@ -20,7 +20,7 @@ const HomePage = ({ filterAds, dispatch }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    filterAds: adsFiltered,
+    adsFilter: adsFilter,
     dispatch
   }
 };

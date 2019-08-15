@@ -24,7 +24,7 @@ const Navbar = () => {
             <Link className="nav-link" to="/immovable">Недвижимость</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/cameras">Фотоаппараты</Link>
+            <Link className="nav-link" to="/cameras">Камеры</Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/auto">Автомобили</Link>

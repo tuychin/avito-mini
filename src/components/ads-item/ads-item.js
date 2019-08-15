@@ -6,16 +6,35 @@ import Carousel from '../carousel/';
 
 import './ads-item.css';
 
-const AdsItem = ({ ads }) => {
-  const { title, price, images, sellerRating, sellerName } = ads;
+const AdsItem = ({ ads, onUpdateFavorites }) => {
+  const { title, price, images, isFavorite, sellerRating, sellerName } = ads;
 
   const separatedPrice = numberSeparator(price);
   const uppercaseTitle = ucFirst(title);
+  const btnColor = isFavorite ? "heart-btn-red" : "heart-btn-blue";
+
+  const onUpdateFavoritesMessage = () => {
+    if (isFavorite === true) {
+      return alert('Объявление удалено из раздела "Избранное"');
+    } else {
+      return alert('Объявление добавлено в раздел "Избранное"')
+    }
+  }
+
+  const handleClick = () => {
+    onUpdateFavorites();
+    onUpdateFavoritesMessage();
+  }
 
   return (
     <div className="ads-item card mb-4">
       <div className="card-header">
-        <i className="heart fa fa-heart"></i>
+      <button
+          //Two handler onClick
+          onClick={handleClick}
+          className={`heart-btn ${btnColor}`}>
+          <i className="fa fa-heart"></i>
+        </button>
         <h2>{uppercaseTitle}</h2>
       </div>
       <div className="card-body">
