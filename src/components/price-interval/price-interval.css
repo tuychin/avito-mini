@@ -6,3 +6,7 @@
 .price-interval .input-group {
   margin: 0 1em 0 1em;
 }
+
+.price-interval .form-control {
+  margin-top: 1em;
+}

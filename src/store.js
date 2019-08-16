@@ -15,7 +15,7 @@ const saveState = (state) => {
       //Save the serialised state to localStorage against the key 'app_state'
       window.localStorage.setItem('app_state', serialisedState);
   } catch (err) {
-      console.warn(`Could not save state to localStorage${err}`);
+      console.warn(`Could not save state to localStorage: ${err}`);
       
   }
 };

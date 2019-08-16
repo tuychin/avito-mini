@@ -80,10 +80,7 @@ class AdsListContainer extends Component {
     }
 
     const filteredAds = filterByCategory(ads, favoriteItems, filter);
-    const transformedAds = updateIsFavorite(filteredAds, favoriteItems);
-
-    console.log(transformedAds);
-    
+    const transformedAds = updateIsFavorite(filteredAds, favoriteItems);    
 
     if (filteredAds.length <= 0) {
       return (
