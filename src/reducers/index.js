@@ -3,6 +3,7 @@ const initialState = {
   favoriteItems: [],
   filter: 'all',
   sort: 'new',
+  loadLimit: 12,
   loading: true,
   error: null
 };
@@ -103,6 +104,12 @@ const reducer = (state = initialState, action) => {
 
     case 'FAVORITES_UPDATE':
       return updateFavoriteItems(state, action.payload);
+
+    case 'UPDATE_LOAD_LIMIT':
+      return {
+        ...state,
+        loadLimit: action.payload
+      };
 
     case 'ADS_FILTER_BY_CATEGORY':
       return {

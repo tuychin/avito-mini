@@ -2,21 +2,30 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { withDataService } from '../hoc';
-import { httpAds, updateFavorites } from '../../actions';
+
+import {
+  httpAds,
+  updateFavorites,
+  updateLoadLimit
+} from '../../actions';
+
 import { compose } from '../../utils';
 import AdsItem from '../ads-item';
+import MoreAdsButton from '../more-ads-button';
 import Preloader from '../preloader';
 import ErrorIndicator from '../error-indicator';
 
 
 import './ads-list.css';
 
-const AdsList = ({ ads, onUpdateFavorites }) => {
+const AdsList = ({ ads, onUpdateFavorites, loadLimit }) => {
+
+  const loadAds = ads.slice(0, loadLimit);
 
   return (
     <div className="ads-list row">
       {
-        ads.map((ads) => {
+        loadAds.map((ads) => {
           return (
             <div className="col-lg-3" key={ads.id}>
               <AdsItem
@@ -27,6 +36,7 @@ const AdsList = ({ ads, onUpdateFavorites }) => {
           )
         })
       }
+      <MoreAdsButton ads={ads} />
     </div>
   );
 }
@@ -34,6 +44,7 @@ const AdsList = ({ ads, onUpdateFavorites }) => {
 class AdsListContainer extends Component {
   componentDidMount() {
     this.props.httpAds();
+    this.props.resetLoadLimit(12);
   }
 
   render() {
@@ -44,6 +55,7 @@ class AdsListContainer extends Component {
       error,
       filter,
       sort,
+      loadLimit,
       onUpdateFavorites
     } = this.props;
 
@@ -80,7 +92,9 @@ class AdsListContainer extends Component {
         case 'new':
           return ads;
         case 'popular':
-          return ads.sort((a, b) => a.sellerRating > b.sellerRating ? 1 : -1).reverse();
+          return ads.sort(
+            (a, b) => a.sellerRating > b.sellerRating ? 1 : -1
+          ).reverse();
         case 'price':
           return ads.sort((a, b) => a.price > b.price ? 1 : -1);
         default:
@@ -111,7 +125,7 @@ class AdsListContainer extends Component {
 
     const filteredAds = filterByCategory(ads, favoriteItems, filter);
     const filteredFavoritesAds = updateIsFavorite(filteredAds, favoriteItems);
-    const filteredFavoritesSortedAds = sortingAds(filteredFavoritesAds, sort);    
+    const filteredFavoritesSortedAds = sortingAds(filteredFavoritesAds, sort);
 
     if (filteredFavoritesSortedAds.length <= 0) {
       return (
@@ -121,12 +135,33 @@ class AdsListContainer extends Component {
       );
     }
 
-    return <AdsList ads={filteredFavoritesSortedAds} onUpdateFavorites={onUpdateFavorites} />;
+    return (
+      <AdsList
+        ads={filteredFavoritesSortedAds}
+        onUpdateFavorites={onUpdateFavorites}
+        loadLimit={loadLimit}
+      />
+    );
   }
 }
 
-const mapStateToProps = ({ ads, favoriteItems, loading, error, filter, sort }) => {
-  return { ads, favoriteItems, loading, error, filter, sort };
+const mapStateToProps = ({
+  ads,
+  favoriteItems,
+  loading,
+  error,
+  filter,
+  sort,
+  loadLimit
+}) => {
+  return { ads,
+    favoriteItems,
+    loading,
+    error,
+    filter,
+    sort,
+    loadLimit
+  };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -134,7 +169,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
   return {
     httpAds: httpAds(dataService, dispatch),
-    onUpdateFavorites: (id) => dispatch(updateFavorites(id))
+    onUpdateFavorites: (id) => dispatch(updateFavorites(id)),
+    resetLoadLimit: (limit) => dispatch(updateLoadLimit(limit))
   }
 }
 

@@ -9,13 +9,13 @@ const BackToTopButton = () => {
     <ScrollTo>
       {({ scrollTo }) => (
         // eslint-disable-next-line jsx-a11y/anchor-is-valid
-        <a className="back-to-top" onClick={() => scrollTo(
+        <button className="back-to-top btn btn-primary" onClick={() => scrollTo(
           {
             x: 500,
             y: 0,
             smooth: true
           })
-        }>&uarr;</a>
+        }>&uarr;</button>
       )}
     </ScrollTo>
   );

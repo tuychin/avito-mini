@@ -29,6 +29,13 @@ const updateFavorites = (adsId) => {
   }
 }
 
+const updateLoadLimit = (limit) => {
+  return {
+    type: 'UPDATE_LOAD_LIMIT',
+    payload: limit
+  }
+}
+
 const adsFilter = (filter) => {
   return {
     type: 'ADS_FILTER_BY_CATEGORY',
@@ -54,6 +61,7 @@ const httpAds = (dataService, dispatch) => () => {
 export {
   httpAds,
   updateFavorites,
+  updateLoadLimit,
   adsFilter,
   adsSort
 }
