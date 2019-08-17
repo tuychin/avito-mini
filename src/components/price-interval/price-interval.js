@@ -1,15 +1,35 @@
 import React from 'react';
+import { connect } from 'react-redux'
+
+import { updatePriceInterval } from '../../actions';
 
 import './price-interval.css';
 
-const PriceInterval = () => {
+const PriceInterval = ({ minValue, maxValue, setPriceInterval, dispatch }) => {
+
+  const onMinPriceIntervalChange = (evt) => {
+    const setMinValue = evt.target.value;
+    dispatch(setPriceInterval(setMinValue, maxValue));
+  }
+
+  const onMaxPriceIntervalChange = (evt) => {
+    const setMaxValue = evt.target.value;
+    dispatch(setPriceInterval(minValue, setMaxValue));
+  }
+
   return (
     <div className="form-group price-interval">
         <div className="input-group">
           <div className="input-group-prepend">
             <span className="input-group-text">ЦЕНА С </span>
           </div>
-          <input type="text" className="form-control" aria-label="Amount (to the nearest dollar)"/>
+          <input
+            type="number"
+            className="form-control"
+            aria-label="Amount (to the nearest dollar)"
+            value={minValue}
+            onChange={onMinPriceIntervalChange}
+          />
           <div className="input-group-append">
             <span className="input-group-text">₽</span>
           </div>
@@ -19,7 +39,13 @@ const PriceInterval = () => {
           <div className="input-group-prepend">
             <span className="input-group-text"> ДО </span>
           </div>
-          <input type="text" className="form-control" aria-label="Amount (to the nearest dollar)"/>
+          <input
+            type="number"
+            className="form-control"
+            aria-label="Amount (to the nearest dollar)"
+            value={maxValue}
+            onChange={onMaxPriceIntervalChange}
+          />
           <div className="input-group-append">
             <span className="input-group-text">₽</span>
           </div>
@@ -28,12 +54,15 @@ const PriceInterval = () => {
   );
 }
 
-export default PriceInterval;
-/*
-<div className="price-interval form-group">
-<label className="col-form-label" for="inputDefault">Цена с </label>
-  <input type="text" className="form-control form-control-lg" placeholder="0" id="inputDefault" />
-<label className="col-form-label" for="inputDefault"> до </label>
-  <input type="text" className="form-control form-control-lg" placeholder="0" id="inputDefault" />
-</div>
-*/
+const mapStateToProps = ( { priceInterval: { minValue, maxValue } }) => {
+  return { minValue, maxValue };
+}
+
+const mapDispatchToProps = (dispatch) => {  
+  return {
+    setPriceInterval: (minValue, maxValue) => updatePriceInterval(minValue, maxValue),
+    dispatch
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PriceInterval);

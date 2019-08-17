@@ -6,7 +6,8 @@ import { withDataService } from '../hoc';
 import {
   httpAds,
   updateFavorites,
-  updateLoadLimit
+  updateLoadLimit,
+  updatePriceInterval
 } from '../../actions';
 
 import { compose } from '../../utils';
@@ -56,7 +57,10 @@ class AdsListContainer extends Component {
       filter,
       sort,
       loadLimit,
-      onUpdateFavorites
+      onUpdateFavorites,
+      minValue,
+      maxValue,
+      search
     } = this.props;
 
     //Filtering by category
@@ -79,7 +83,22 @@ class AdsListContainer extends Component {
       }
     }
 
-    //Sorting
+    //Transform filteredAds for update isFavorite value
+    const updateIsFavorite = (ads, favoriteItems) => {
+      return (
+        ads.map((adsItem) => {
+        const favoriteItem = favoriteItems.find(({id}) => id === adsItem.id);
+
+        if (favoriteItem === undefined) {
+          return {...adsItem, isFavorite: false};
+        }
+
+          return {...adsItem, isFavorite: true};
+        })
+      );
+    }
+
+    //Sorting by popular & price
     const sortingAds = (ads, sortBy) => {
 
       ads.forEach(element => {
@@ -102,17 +121,35 @@ class AdsListContainer extends Component {
       }
     }
 
-    //Transform filteredAds for update isFavorite value
-    const updateIsFavorite = (ads, favoriteItems) => {
-      return (
-        ads.map((adsItem) => {
-        const favoriteItem = favoriteItems.find(({id}) => id === adsItem.id);
-        if (favoriteItem === undefined) {
-          return {...adsItem, isFavorite: false};
-        }
-          return {...adsItem, isFavorite: true};
-        })
-      );
+    //Price interval filter
+    const priceIntervalFilter = (arr, a, b) => { 
+
+      if (a === '' && b === '') {
+        return arr;
+      }
+
+      if (a === '') {
+        return arr.filter(item => (b >= item.price) );
+      }
+
+      if (b === '') {
+        return arr.filter(item => (a >= item.price) );
+      }
+
+      return arr.filter(item => (a <= item.price && item.price <= b) );
+    }
+
+    //Search by title
+    const searchFilter = (ads, value) => {
+      if (value.length === 0) {
+        return ads;
+      };
+  
+      return ads.filter((item) => {
+        return item.title
+                    .toLowerCase()
+                    .indexOf(value.toLowerCase()) > -1;
+      });
     }
     
     if (loading) {
@@ -126,8 +163,10 @@ class AdsListContainer extends Component {
     const filteredAds = filterByCategory(ads, favoriteItems, filter);
     const filteredFavoritesAds = updateIsFavorite(filteredAds, favoriteItems);
     const filteredFavoritesSortedAds = sortingAds(filteredFavoritesAds, sort);
+    const filteredFavoritesSortedPriceIntervalAds = priceIntervalFilter(filteredFavoritesSortedAds, minValue, maxValue);
+    const filteredFavoritesSortedPriceIntervalSearchAds = searchFilter(filteredFavoritesSortedPriceIntervalAds, search);    
 
-    if (filteredFavoritesSortedAds.length <= 0) {
+    if (filteredFavoritesSortedPriceIntervalSearchAds.length <= 0) {
       return (
         <div className="jumbotron text-center">
           <h2>Нет объявлений</h2>
@@ -137,7 +176,7 @@ class AdsListContainer extends Component {
 
     return (
       <AdsList
-        ads={filteredFavoritesSortedAds}
+        ads={filteredFavoritesSortedPriceIntervalSearchAds}
         onUpdateFavorites={onUpdateFavorites}
         loadLimit={loadLimit}
       />
@@ -152,7 +191,12 @@ const mapStateToProps = ({
   error,
   filter,
   sort,
-  loadLimit
+  loadLimit,
+  priceInterval: {
+    minValue,
+    maxValue
+  },
+  search
 }) => {
   return { ads,
     favoriteItems,
@@ -160,7 +204,10 @@ const mapStateToProps = ({
     error,
     filter,
     sort,
-    loadLimit
+    loadLimit,
+    minValue,
+    maxValue,
+    search
   };
 }
 
@@ -170,7 +217,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     httpAds: httpAds(dataService, dispatch),
     onUpdateFavorites: (id) => dispatch(updateFavorites(id)),
-    resetLoadLimit: (limit) => dispatch(updateLoadLimit(limit))
+    resetLoadLimit: (limit) => dispatch(updateLoadLimit(limit)),
+    resetPriceInterval: (minValue, maxValue) => dispatch(updatePriceInterval(minValue, maxValue)),
   }
 }
 

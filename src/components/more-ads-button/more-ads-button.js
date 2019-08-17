@@ -8,11 +8,7 @@ import './more-ads-button.css';
 const MoreAdsButton = ({ ads, loadLimit, onIncreaseLoadLimit, dispatch }) => {
 
   if (loadLimit >= ads.length) {
-    return (
-      <div className="more-ads-btn jumbotron text-center">
-        <h2>Показаны все объявления</h2>
-      </div>
-    );
+    return null;
   }
 
   return (

@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 
+import SearchPanel from '../search-panel';
+
 import './navbar.css';
 
 const Navbar = ({ filter }) => {
@@ -37,9 +39,7 @@ const Navbar = ({ filter }) => {
             <Link className="nav-link" to="/favorites">Избранное ❤</Link>
           </li>
         </ul>
-        <form className="form-inline my-2 my-lg-0">
-          <input className="form-control mr-sm-2" type="text" placeholder="Поиск"/>
-        </form>
+        <SearchPanel />
       </div>
     </nav>
   );

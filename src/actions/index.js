@@ -29,13 +29,6 @@ const updateFavorites = (adsId) => {
   }
 }
 
-const updateLoadLimit = (limit) => {
-  return {
-    type: 'UPDATE_LOAD_LIMIT',
-    payload: limit
-  }
-}
-
 const adsFilter = (filter) => {
   return {
     type: 'ADS_FILTER_BY_CATEGORY',
@@ -50,6 +43,30 @@ const adsSort = (sort) => {
   }
 }
 
+const updateLoadLimit = (limit) => {
+  return {
+    type: 'UPDATE_LOAD_LIMIT',
+    payload: limit
+  }
+}
+
+const updatePriceInterval = (minValue, maxValue) => {
+  return {
+    type: 'UPDATE_PRICE_INTERVAL',
+    payload: {
+      minValue: minValue,
+      maxValue: maxValue
+    }
+  }
+}
+
+const searchAds = (value) => {
+  return {
+    type: 'SEARCH_ADS',
+    payload: value
+  }
+}
+
 //Get data
 const httpAds = (dataService, dispatch) => () => {
   dispatch(adsRequested());
@@ -61,7 +78,9 @@ const httpAds = (dataService, dispatch) => () => {
 export {
   httpAds,
   updateFavorites,
-  updateLoadLimit,
   adsFilter,
-  adsSort
+  adsSort,
+  updateLoadLimit,
+  updatePriceInterval,
+  searchAds
 }

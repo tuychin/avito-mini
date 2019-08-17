@@ -1,11 +1,16 @@
 const initialState = {
   ads: [],
   favoriteItems: [],
+  loading: true,
+  error: null,
   filter: 'all',
   sort: 'new',
   loadLimit: 12,
-  loading: true,
-  error: null
+  priceInterval: {
+    minValue: '',
+    maxValue: ''
+  },
+  search: ''
 };
 
 const updateArray = (array, item, idx) => {
@@ -121,6 +126,18 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         sort: action.payload
+      };
+
+    case 'UPDATE_PRICE_INTERVAL':
+      return {
+        ...state,
+        priceInterval: action.payload
+      };
+
+    case 'SEARCH_ADS':
+      return {
+        ...state,
+        search: action.payload
       };
     
     default:
