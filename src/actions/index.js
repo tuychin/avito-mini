@@ -22,6 +22,13 @@ const adsError = (error) => {
   }
 }
 
+const updateFavorites = (adsId) => {
+  return {
+    type: 'FAVORITES_UPDATE',
+    payload: adsId
+  }
+}
+
 const adsFilter = (filter) => {
   return {
     type: 'ADS_FILTER_BY_CATEGORY',
@@ -29,10 +36,10 @@ const adsFilter = (filter) => {
   }
 }
 
-const updateFavorites = (adsId) => {
+const adsSort = (sort) => {
   return {
-    type: 'FAVORITES_UPDATE',
-    payload: adsId
+    type: 'ADS_SORT',
+    payload: sort
   }
 }
 
@@ -46,6 +53,7 @@ const httpAds = (dataService, dispatch) => () => {
 
 export {
   httpAds,
+  updateFavorites,
   adsFilter,
-  updateFavorites
+  adsSort
 }

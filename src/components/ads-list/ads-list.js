@@ -37,8 +37,17 @@ class AdsListContainer extends Component {
   }
 
   render() {
-    const { ads, favoriteItems, loading, error, filter, onUpdateFavorites } = this.props;
+    const {
+      ads,
+      favoriteItems,
+      loading,
+      error,
+      filter,
+      sort,
+      onUpdateFavorites
+    } = this.props;
 
+    //Filtering by category
     const filterByCategory = ( ads, favoriteItems, filter ) => {    
       switch(filter) {
         case 'all':
@@ -54,7 +63,28 @@ class AdsListContainer extends Component {
         case 'favorites':
           return favoriteItems;
         default:
-            return []
+            return <ErrorIndicator />;
+      }
+    }
+
+    //Sorting
+    const sortingAds = (ads, sortBy) => {
+
+      ads.forEach(element => {
+        if (element.price === undefined) {
+          element.price = 0;
+        }
+      });
+
+      switch(sortBy) {
+        case 'new':
+          return ads;
+        case 'popular':
+          return ads.sort((a, b) => a.sellerRating > b.sellerRating ? 1 : -1).reverse();
+        case 'price':
+          return ads.sort((a, b) => a.price > b.price ? 1 : -1);
+        default:
+            return <ErrorIndicator />;
       }
     }
 
@@ -80,9 +110,10 @@ class AdsListContainer extends Component {
     }
 
     const filteredAds = filterByCategory(ads, favoriteItems, filter);
-    const transformedAds = updateIsFavorite(filteredAds, favoriteItems);    
+    const filteredFavoritesAds = updateIsFavorite(filteredAds, favoriteItems);
+    const filteredFavoritesSortedAds = sortingAds(filteredFavoritesAds, sort);    
 
-    if (filteredAds.length <= 0) {
+    if (filteredFavoritesSortedAds.length <= 0) {
       return (
         <div className="jumbotron text-center">
           <h2>Нет объявлений</h2>
@@ -90,12 +121,12 @@ class AdsListContainer extends Component {
       );
     }
 
-    return <AdsList ads={transformedAds} onUpdateFavorites={onUpdateFavorites} />;
+    return <AdsList ads={filteredFavoritesSortedAds} onUpdateFavorites={onUpdateFavorites} />;
   }
 }
 
-const mapStateToProps = ({ ads, favoriteItems, loading, error, filter }) => {
-  return { ads, favoriteItems, loading, error, filter };
+const mapStateToProps = ({ ads, favoriteItems, loading, error, filter, sort }) => {
+  return { ads, favoriteItems, loading, error, filter, sort };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

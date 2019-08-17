@@ -38,7 +38,7 @@ const AdsItem = ({ ads, onUpdateFavorites }) => {
         <h2>{uppercaseTitle}</h2>
       </div>
       <div className="card-body">
-        <span className="price">{price === undefined ? 'Цена не указана' : `${separatedPrice} ₽`}</span>
+        <span className="price">{price === 0 ? 'Цена не указана' : `${separatedPrice} ₽`}</span>
       </div>
       <Carousel images={images} />
       <div className="card-body">

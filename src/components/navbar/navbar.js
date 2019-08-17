@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 import './navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ filter }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <Link className="navbar-brand" to="/">Avito-Mini</Link>
@@ -20,19 +21,19 @@ const Navbar = () => {
 
       <div className="collapse navbar-collapse" id="navbarColor01">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
+          <li className={`nav-item${filter === 'immovable' ? ' active' : ''}`}>
             <Link className="nav-link" to="/immovable">Недвижимость</Link>
           </li>
-          <li className="nav-item">
+          <li className={`nav-item${filter === 'cameras' ? ' active' : ''}`}>
             <Link className="nav-link" to="/cameras">Камеры</Link>
           </li>
-          <li className="nav-item">
+          <li className={`nav-item${filter === 'auto' ? ' active' : ''}`}>
             <Link className="nav-link" to="/auto">Автомобили</Link>
           </li>
-          <li className="nav-item">
+          <li className={`nav-item${filter === 'laptops' ? ' active' : ''}`}>
             <Link className="nav-link" to="/laptops">Ноутбуки</Link>
           </li>
-          <li className="nav-item">
+          <li className={`nav-item${filter === 'favorites' ? ' active' : ''}`}>
             <Link className="nav-link" to="/favorites">Избранное ❤</Link>
           </li>
         </ul>
@@ -44,4 +45,8 @@ const Navbar = () => {
   );
 }
 
-export default Navbar;
+const mapStateToProps = ({ filter }) => {
+  return { filter };
+}
+
+export default connect(mapStateToProps)(Navbar);

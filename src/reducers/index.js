@@ -1,9 +1,10 @@
 const initialState = {
   ads: [],
   favoriteItems: [],
+  filter: 'all',
+  sort: 'new',
   loading: true,
-  error: null,
-  filter: 'all'
+  error: null
 };
 
 const updateArray = (array, item, idx) => {
@@ -100,14 +101,20 @@ const reducer = (state = initialState, action) => {
         error: action.payload
       };
 
+    case 'FAVORITES_UPDATE':
+      return updateFavoriteItems(state, action.payload);
+
     case 'ADS_FILTER_BY_CATEGORY':
       return {
         ...state,
         filter: action.payload
       };
 
-    case 'FAVORITES_UPDATE':
-      return updateFavoriteItems(state, action.payload);
+    case 'ADS_SORT':
+      return {
+        ...state,
+        sort: action.payload
+      };
     
     default:
       return state;
