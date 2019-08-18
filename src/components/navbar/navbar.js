@@ -4,12 +4,16 @@ import { connect } from 'react-redux'
 
 import SearchPanel from '../search-panel';
 
+import logo from './avito-mini-icon.png';
 import './navbar.css';
 
 const Navbar = ({ filter }) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <Link className="navbar-brand" to="/">Avito-Mini</Link>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Link className="navbar-brand" to="/">
+        <img className="logo" src={logo} alt="logo" />
+        Avito-Mini
+      </Link>
       <button className="navbar-toggler"
               type="button"
               data-toggle="collapse"

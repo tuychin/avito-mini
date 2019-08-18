@@ -1,3 +1,8 @@
+.navbar .logo {
+  width: 2em;
+  margin-right: .6em;
+}
+
 .nav-item {
   font-size: 1.2em;
 }
