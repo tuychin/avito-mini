@@ -1,3 +1,5 @@
+#### Ссылка для примера: [tuychin.github.io](https://tuychin.github.io/)
+
 #### Стэк
 
 - React / Redux / Router
