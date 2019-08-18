@@ -1,4 +1,4 @@
-#### Ссылка для примера: [tuychin.github.io](https://tuychin.github.io/)
+#### Ссылка для просмотра приложения: [tuychin.github.io](https://tuychin.github.io/)
 
 #### Стэк
 
