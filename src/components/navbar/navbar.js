@@ -30,14 +30,14 @@ const Navbar = ({ filter }) => {
           <li className={`nav-item${filter === 'immovable' ? ' active' : ''}`}>
             <Link className="nav-link" to="/immovable">Недвижимость</Link>
           </li>
-          <li className={`nav-item${filter === 'cameras' ? ' active' : ''}`}>
-            <Link className="nav-link" to="/cameras">Камеры</Link>
-          </li>
           <li className={`nav-item${filter === 'auto' ? ' active' : ''}`}>
             <Link className="nav-link" to="/auto">Автомобили</Link>
           </li>
           <li className={`nav-item${filter === 'laptops' ? ' active' : ''}`}>
             <Link className="nav-link" to="/laptops">Ноутбуки</Link>
+          </li>
+          <li className={`nav-item${filter === 'cameras' ? ' active' : ''}`}>
+            <Link className="nav-link" to="/cameras">Камеры</Link>
           </li>
           <li className={`nav-item${filter === 'favorites' ? ' active' : ''}`}>
             <Link className="nav-link" to="/favorites">Избранное ❤</Link>

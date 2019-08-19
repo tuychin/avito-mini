@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { connect } from 'react-redux'
 
@@ -5,16 +6,16 @@ import { updatePriceInterval } from '../../actions';
 
 import './price-interval.css';
 
-const PriceInterval = ({ minValue, maxValue, setPriceInterval, dispatch }) => {
+const PriceInterval = ({ minValue, maxValue, setPriceInterval }) => {
 
   const onMinPriceIntervalChange = (evt) => {
     const setMinValue = evt.target.value;
-    dispatch(setPriceInterval(setMinValue, maxValue));
+    setPriceInterval(setMinValue, maxValue);
   }
 
   const onMaxPriceIntervalChange = (evt) => {
     const setMaxValue = evt.target.value;
-    dispatch(setPriceInterval(minValue, setMaxValue));
+    setPriceInterval(minValue, setMaxValue);
   }
 
   return (
@@ -60,9 +61,8 @@ const mapStateToProps = ( { priceInterval: { minValue, maxValue } }) => {
 
 const mapDispatchToProps = (dispatch) => {  
   return {
-    setPriceInterval: (minValue, maxValue) => updatePriceInterval(minValue, maxValue),
-    dispatch
+    setPriceInterval: (minValue, maxValue) => dispatch(updatePriceInterval(minValue, maxValue)),
   }
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(PriceInterval);

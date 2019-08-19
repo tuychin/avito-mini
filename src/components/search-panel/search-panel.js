@@ -5,11 +5,11 @@ import { searchAds } from '../../actions';
 
 import './search-panel.css';
 
-const SearchPanel = ({ search, onSearchAds, dispatch }) => {
+const SearchPanel = ({ search, onSearchAds }) => {
 
   const onSearchChange = (evt) => {
     const value = evt.target.value;
-    dispatch(onSearchAds(value));
+    onSearchAds(value);
   }
 
   return (
@@ -31,8 +31,7 @@ const mapStateToProps = ({ search }) => {
 
 const mapDispatchToProps = (dispatch) => {  
   return {
-    onSearchAds: (value) => searchAds(value),
-    dispatch
+    onSearchAds: (value) => dispatch(searchAds(value))
   }
 };
 

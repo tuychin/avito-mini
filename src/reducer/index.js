@@ -107,7 +107,7 @@ const reducer = (state = initialState, action) => {
         error: action.payload
       };
 
-    case 'FAVORITES_UPDATE':
+    case 'UPDATE_FAVORITES':
       return updateFavoriteItems(state, action.payload);
 
     case 'UPDATE_LOAD_LIMIT':

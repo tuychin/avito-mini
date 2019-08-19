@@ -4,16 +4,16 @@ Redux Store
 
 import { createStore } from 'redux';
 
-import reducer from './reducers';
+import reducer from './reducer';
 
 //This function accepts the app state, and saves it to localStorage
-const saveState = (state) => {
+const saveState = async (state) => {
   try {
       //Convert the state to a JSON string 
       const serialisedState = JSON.stringify(state);
 
       //Save the serialised state to localStorage against the key 'app_state'
-      window.localStorage.setItem('app_state', serialisedState);
+      await window.localStorage.setItem('app_state', serialisedState);
   } catch (err) {
       console.warn(`Could not save state to localStorage: ${err}`);
       

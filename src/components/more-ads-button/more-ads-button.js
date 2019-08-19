@@ -5,7 +5,7 @@ import { updateLoadLimit } from '../../actions';
 
 import './more-ads-button.css';
 
-const MoreAdsButton = ({ ads, loadLimit, onIncreaseLoadLimit, dispatch }) => {
+const MoreAdsButton = ({ ads, loadLimit, onIncreaseLoadLimit }) => {
 
   if (loadLimit >= ads.length) {
     return null;
@@ -15,7 +15,7 @@ const MoreAdsButton = ({ ads, loadLimit, onIncreaseLoadLimit, dispatch }) => {
     <div className="more-ads-btn">
       <button
         className="btn btn-primary"
-        onClick={() => dispatch(onIncreaseLoadLimit(loadLimit + 12))}>
+        onClick={() => onIncreaseLoadLimit(loadLimit + 12)}>
         Больше объявлений
       </button>
     </div>
@@ -28,8 +28,7 @@ const mapStateToProps = ({ loadLimit }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onIncreaseLoadLimit: (loadLimit) => updateLoadLimit(loadLimit),
-    dispatch
+    onIncreaseLoadLimit: (loadLimit) => dispatch(updateLoadLimit(loadLimit))
   }
 };
 

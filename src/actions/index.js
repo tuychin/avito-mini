@@ -24,8 +24,15 @@ const adsError = (error) => {
 
 const updateFavorites = (adsId) => {
   return {
-    type: 'FAVORITES_UPDATE',
+    type: 'UPDATE_FAVORITES',
     payload: adsId
+  }
+}
+
+const updateLoadLimit = (limit) => {
+  return {
+    type: 'UPDATE_LOAD_LIMIT',
+    payload: limit
   }
 }
 
@@ -40,13 +47,6 @@ const adsSort = (sort) => {
   return {
     type: 'ADS_SORT',
     payload: sort
-  }
-}
-
-const updateLoadLimit = (limit) => {
-  return {
-    type: 'UPDATE_LOAD_LIMIT',
-    payload: limit
   }
 }
 
@@ -78,9 +78,9 @@ const httpAds = (dataService, dispatch) => () => {
 export {
   httpAds,
   updateFavorites,
+  updateLoadLimit,
   adsFilter,
   adsSort,
-  updateLoadLimit,
   updatePriceInterval,
   searchAds
 }

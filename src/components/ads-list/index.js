@@ -1,3 +1,3 @@
-import AdsList from './ads-list';
+import AdsListContainer from './ads-list-container';
 
-export default AdsList;
+export default AdsListContainer;
