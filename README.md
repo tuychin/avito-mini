@@ -10,6 +10,17 @@
 
 - XMLHttpRequest + Promise
 
+## Скрипты
+
+`npm run start`
+
+`npm run build`
+
+`npm run test`
+
+`npm run eject`
+
+
 ## Дополнительный функционал
 
 - Отображение объявлений по частям. Кнопка "Больше объявлений"
