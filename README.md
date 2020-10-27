@@ -1,4 +1,6 @@
-#### Ссылка для просмотра приложения: [avito-mini.tuychin.ru](https://avito-mini.tuychin.ru/)
+# Avito-mini
+
+#### DEMO: [avito-mini.tuychin.ru](https://avito-mini.tuychin.ru/)
 
 #### Стэк
 
