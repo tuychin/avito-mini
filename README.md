@@ -1,6 +1,6 @@
 # Avito-mini
 
-#### DEMO: [avito-mini.tuychin.ru](https://avito-mini.tuychin.ru/)
+#### DEMO: [tuychin.ru/avito-mini](https://tuychin.ru/avito-mini)
 
 #### Стэк
 
