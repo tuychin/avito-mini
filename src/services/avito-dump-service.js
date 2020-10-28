@@ -3,41 +3,57 @@ Client API
 */
 export default class AvitoDumpService {
 
-  _apiBase = 'https://avito.dump.academy';
+  /** URL https://avito.dump.academy - not working **/
 
-  getResource = (resourse) => {
-      const url = `${this._apiBase}${resourse}`;
+  // _apiBase = 'https://avito.dump.academy';
 
-      return new Promise(function(resolve, reject) {
-        const req = new XMLHttpRequest();
+  // getData = (resourse) => {
+  //     const url = `${this._apiBase}${resourse}`;
+
+  //     return new Promise(function(resolve, reject) {
+  //       const req = new XMLHttpRequest();
         
-        req.open('GET', url, true);
-        req.send();
+  //       req.open('GET', url, true);
+  //       req.send();
       
-        req.onreadystatechange = function () {
-          if (req.readyState === 4) {
-            if(req.status === 200) {
-              try {
-                const resObj = JSON.parse(req.response);
-                resolve(resObj);
-              } catch(e) {
-                console.warn("There was an error in JSON. Could not parse!");
-              }
-            } else {
-              reject(console.warn("Did not receive 200 OK from response!"));
-            }
-          }
-        }
+  //       req.onreadystatechange = function () {
+  //         if (req.readyState === 4) {
+  //           if(req.status === 200) {
+  //             try {
+  //               const resObj = JSON.parse(req.response);
+  //               resolve(resObj);
+  //             } catch(e) {
+  //               console.error("There was an error in JSON. Could not parse!");
+  //             }
+  //           } else {
+  //             reject(console.error("Did not receive 200 OK from response!"));
+  //           }
+  //         }
+  //       }
+  //   });
+  // }
+
+  getData = (dataName) => {
+    return new Promise(async (resolve, reject) => {
+      const mockData = await import(`./mock-data-${dataName}`);
+
+      if (mockData) {
+        setTimeout(() => {
+          resolve(mockData.default);
+        }, 1000);
+      } else {
+        reject(console.error('Import error!'));
+      }
     });
   }
   
   getAllProducts = async () => {
-    const res = await this.getResource(`/products`);
+    const res = await this.getData('products');
     return res.data;
   }
 
   getAllSellers = async () => {
-    const res = await this.getResource(`/sellers`);
+    const res = await this.getData('sellers');
     return res.data;
   }
 
