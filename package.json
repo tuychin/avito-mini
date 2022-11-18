@@ -9,7 +9,7 @@
     "react-favicon": "0.0.16",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
+    "react-scripts": "5.0.1",
     "react-scroll-to": "^2.0.10",
     "react-slick": "^0.25.2",
     "react-star-ratings": "^2.3.0",
