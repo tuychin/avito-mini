@@ -1,7 +1,5 @@
 # Avito-mini
 
-#### DEMO: [tuychin.ru/avito-mini](https://tuychin.ru/avito-mini)
-
 #### Стэк
 
 - React / Redux / Router
